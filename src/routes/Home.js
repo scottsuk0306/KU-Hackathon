@@ -10,7 +10,7 @@ const Home = ({userObj}) => {
         onSnapshot(collection(dbService, "nweets"), (snapshot) =>{
             const nweetArray=snapshot.docs.map((doc)=>(
                 {
-                    id:doc.idm,
+                    id:doc.id,
                     ...doc.data(),
                 }));
                 setNweets(nweetArray.reverse());
