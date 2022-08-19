@@ -1,6 +1,6 @@
 import { dbService } from "fbase";
 import React, { useState } from "react";
-import { doc, deleteDoc } from "firebase/firestore";
+import { doc, deleteDoc,updateDoc } from "firebase/firestore";
 
 const Nweet = ({ nweetObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
@@ -17,19 +17,21 @@ const Nweet = ({ nweetObj, isOwner }) => {
     }
     const toggleEditing = () => setEditing((prev) => !prev);
     const onSubmit=(event)=>{
-        event.preventDfault();
+        event.preventDefault();
+        updateDoc(doc(dbService, "nweets", nweetObj.id), { text: newNweet });
     }
     const onChange =(event)=>{
         const {
-            target:{value},}
-            =event;
+            target:{value},
+        }=event;
+        setNewNweet(value);
     }
     return (
         <div>
             {editing ? (
                 <>
-                <form onSubmit={onsubmit}>
-                <input onChange={onchange} type="text" placeholder="what is your editing" value={newNweet} required />
+                <form onSubmit={onSubmit}>
+                <input onChange={onChange} type="text" placeholder="what is your editing" value={newNweet} required />
                 <input type="submit" value="update nweet"/>
                 </form>
                 <button onClick={toggleEditing}>CANCEL</button>
