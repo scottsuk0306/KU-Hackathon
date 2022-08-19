@@ -32,7 +32,9 @@ const Home = ({userObj}) => {
         } = event;
         setNweet(value);
     };
-    console.log(nweets)
+    const onFileChange=(event)=>{
+
+    }
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -40,6 +42,7 @@ const Home = ({userObj}) => {
                     type="text" placeholder="What's on your mind?"
                     onChange={onChange}
                     maxLength={120} />
+                <input type="file" accept="image/*" onChange={onFileChange}/>
                 <input type="submit" value="Nweet" />
             </form>
             <div>
