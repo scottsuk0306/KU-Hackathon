@@ -12,19 +12,19 @@ const TeamDetail=()=>{
         mission:"아무래도 불성실한 분을 모시고 싶지 않기 떄문에 아래 링크에 해당하는 강의 수강을 확인 후 승인하겠습니다. https://nomadcoders.co/react-for-beginners"
     });
     let id=useParams();
-    componentDidMount() {
-        onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
-            const teamArray = snapshot.docs.map((doc) => (
-                {
-                    id: doc.id,
-                    ...doc.data(),
-                }));
-                setTeams(teamArray);
-        }
-        )
-    };
-    let currentTeam=teams.filter(team=>team.teamId===id.teamid);
-    setTeam(currentTeam[0]);
+    // componentDidMount() {
+    //     onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
+    //         const teamArray = snapshot.docs.map((doc) => (
+    //             {
+    //                 id: doc.id,
+    //                 ...doc.data(),
+    //             }));
+    //             setTeams(teamArray);
+    //     }
+    //     )
+    // };
+    // let currentTeam=teams.filter(team=>team.teamId===id.teamid);
+    // setTeam(currentTeam[0]);
     console.log(team)
     return(
         <div>

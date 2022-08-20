@@ -2,7 +2,7 @@ import React from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Auth from 'routes/Auth'
 import Home from 'routes/Home'
-import Profile from 'routes/Profile'
+import ProfileCard from 'routes/ProfileCard'
 import Navigation from 'components/Navigation'
 import TeamView from 'routes/TeamView'
 import TeamDetail from 'routes/TeamDetail'
@@ -26,7 +26,13 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
               <Home userObj={userObj} />
             </Route>
             <Route exact path='/profile'>
-              <Profile userObj={userObj} refreshUser={refreshUser} />
+              <ProfileCard
+                name="Rita Correia"
+                age="32"
+                city="Backend Developer"
+                followers="80K"
+                likes="803K"
+                photos="1.4K"/>
             </Route>
             <Route exact path='/teamview'>
               <TeamView userObj={userObj} />
