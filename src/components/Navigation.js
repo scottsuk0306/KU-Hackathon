@@ -45,8 +45,8 @@ const Navigation = ({ userObj }) => (
           <FontAwesomeIcon icon={faUsers} color={'#04AAFF'} size='2x' />
           <span style={{ marginTop: 10 }}>
             {userObj.displayName
-              ? `${userObj.displayName}의 Profile`
-              : 'Profile'}
+              ? `팀 모집하기`
+              : '팀 모집하기'}
           </span>
         </Link>
       </li>

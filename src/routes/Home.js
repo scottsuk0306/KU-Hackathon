@@ -11,6 +11,8 @@ const Home = ({ userObj }) => {
     const [attatchment, setAttatchment] = useState("");
     useEffect(() => {
         onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
+            dbService
+                .orderBy("createdAt", "desc")
             const teamArray = snapshot.docs.map((doc) => (
                 {
                     id: doc.id,
@@ -22,7 +24,7 @@ const Home = ({ userObj }) => {
     }, []);
     return (
         <div>
-            <h1>현재 모집중인 팀들</h1>
+            <h1>현재 모집중인 팀</h1>
             <br></br>
             <ul>
                 {nweets.map((nweet) => (
