@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { authService, dbService } from "fbase";
 import { addDoc ,collection} from "firebase/firestore";
 import { async } from "@firebase/util";
+import {v4 as uuid} from "uuid";
 const TeamView = ({userObj})=>{
     const [goal,setGoal]=useState("");
     const [description,setDescription]=useState("");
@@ -50,6 +51,7 @@ const TeamView = ({userObj})=>{
             createdAt:Date.now(),
             mission:mission,
             creatorId:userObj.uid,
+            teamId:uuid(),
         }
         await addDoc(collection(dbService,"teamlist"),newTeam);
         console.log(newTeam)
