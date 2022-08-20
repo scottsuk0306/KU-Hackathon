@@ -5,10 +5,9 @@ import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import Nweet from "components/Nweet";
 import { ref, getStorage, uploadString, getDownloadURL } from "firebase/storage";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import TeamDetail from "./TeamDetail";
 const Home = ({ userObj }) => {
-    const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attatchment, setAttatchment] = useState("");
     useEffect(() => {
         onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
             const teamArray = snapshot.docs.map((doc) => (
@@ -22,7 +21,7 @@ const Home = ({ userObj }) => {
     }, []);
     return (
         <div>
-            <h1>현재 모집중인 팀</h1>
+            <h1>현재 모집중인 팀들</h1>
             <br></br>
             <ul>
                 {nweets.map((nweet) => (
