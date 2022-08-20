@@ -5,36 +5,41 @@ import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { dbService } from "fbase";
 import { useParams } from "react-router-dom";
 const TeamDetail=()=>{
-    const[teams,setTeams]=useState([]);
-    const[team,setTeam]=useState({
-        goal:"프론트엔드 프레임워크 리액트 기본 다지기",
-        description:"저희는 프론트엔드 개발자를 지향하는 사람들의 모입입니다. 프론트엔드 프레임 워크의 대표인 리액트를 함께 공부함으로써 개발자 커리어의 첫발자국을 함께하실 분을 모집합니다.",
-        mission:"아무래도 불성실한 분을 모시고 싶지 않기 떄문에 아래 링크에 해당하는 강의 수강을 확인 후 승인하겠습니다. https://nomadcoders.co/react-for-beginners"
+    const [nweets, setNweets] = useState([
+
+    ]);
+    const [nweet,setNweet]=useState({
+        goal:"목표",
+        description:"상세 설명",
+        mission:"가입 조건",
     });
-    let id=useParams();
-    componentDidMount() {
+        
+    const id=useParams();
+    /*useEffect(() => {
         onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
             const teamArray = snapshot.docs.map((doc) => (
                 {
                     id: doc.id,
                     ...doc.data(),
                 }));
-                setTeams(teamArray);
+            setNweets(teamArray.reverse());
         }
         )
-    };
-    let currentTeam=teams.filter(team=>team.teamId===id.teamid);
-    setTeam(currentTeam[0]);
-    console.log(team)
+    }, []);
+    console.log(nweets);
+    setNweet(nweets.filter(nweet=>nweet.teamId===id.teamid)[0])
+    if(nweet===null)return(
+        <div>
+            현재 데이터를 불러오고 있어요!
+        </div>
+    );else{*/
     return(
         <div>
-    <ul>
-        <li>{team.goal}</li>
-        <br/>
-        <li>{team.description}</li>
-        <br/>
-        <li>{team.mission}</li>
-    </ul>
+            <ul>
+                <li>{nweet.goal}</li>
+                <li>{nweet.description}</li>
+                <li>{nweet.mission}</li>
+            </ul>
     </div>
     );
 }
