@@ -7,7 +7,7 @@ import {ref,getStorage,uploadString, getDownloadURL} from "firebase/storage";
 const Home = ({userObj}) => {
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attatchment, setAttatchment]=useState();
+    const [attatchment, setAttatchment]=useState("");
     useEffect(() => {
         onSnapshot(collection(dbService, "nweets"), (snapshot) =>{
             const nweetArray=snapshot.docs.map((doc)=>(

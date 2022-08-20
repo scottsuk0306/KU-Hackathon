@@ -1,7 +1,7 @@
 import AppRouter from "components/Router";
 import { useState, useEffect } from "react";
 import { authService } from "fbase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, updateCurrentUser } from "firebase/auth";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -11,18 +11,24 @@ function App() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setIsLoggedIn(true);
-        setuserObj(user);
+        setuserObj({
+          uid:user.uid,
+          displayName:user.displayName,
+          updateProfile: (args)=>user.updateProfile(args),
+        });
       } else {
         setIsLoggedIn(false);
       }
       setInit(true);
     });
   }, []);
-
+  const refreshUser=async()=>{
+    await updateCurrentUser(authService,authService.currentUser);
+    setuserObj(authService.currentUser);
+  };
   return (
     <>
-      {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} /> : "Initializing..."}
+      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing..."}
       
       <footer>&copy; NWITTER {new Date().getFullYear()}</footer>
     </>
