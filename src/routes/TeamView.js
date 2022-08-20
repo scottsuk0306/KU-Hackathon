@@ -58,18 +58,18 @@ const TeamView = ({userObj})=>{
 
     return(
         <>
-            <h3>팀을 생성해보세요</h3>
+            <h1>팀을 생성해보세요!</h1>
+            <br></br>
             <form onSubmit={onSubmit} >
-                팀의 목표<br></br><input type="text" value={goal} onChange={onChangeGoal}/><br/>
-                마감 날짜<br></br><input type="date" value={date} onChange={onChangeDate}/><br></br>
-                모집 인원<br></br><input type="number" value={num} onChange={onChangeNum}/><br/>
-                상세 설명<br></br><input type="text" value={description} onChange={onChangeDescription}/><br></br>
-                사전 미션<br></br><input type="text" value={mission} onChange={onChangeMission}/><br></br>
+                팀의 목표<br></br><input type="text" value={goal} onChange={onChangeGoal} className="formInput"/><br/>
+                마감 날짜<br></br><input type="date" value={date} onChange={onChangeDate} className="formInput"/><br></br>
+                모집 인원<br></br><input type="number" value={num} onChange={onChangeNum} className="formInput"/><br/>
+                상세 설명<br></br><input type="text" value={description} onChange={onChangeDescription} className="formInput"/><br></br>
+                사전 미션<br></br><input type="text" value={mission} onChange={onChangeMission} className="formInput"/><br></br>
                 <input type="submit" value="팀 생성하기"/> 
             </form>
                        
         </>
-        
     )
                 
 }
