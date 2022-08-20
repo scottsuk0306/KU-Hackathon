@@ -55,7 +55,7 @@ const TeamView = ({userObj})=>{
                 마감 날짜<br></br><input type="date" value={date} onChange={onChangeDate}/><br></br>
                 모집 인원<br></br><input type="number" value={num} onChange={onChangeNum}/><br/>
                 상세 설명<br></br><input type="text" value={description} onChange={onChangeDescription}/><br></br>
-                <input type="submit" value="팀 생성하기" /> 
+                <input type="submit" value="팀 생성하기"/> 
             </form>
                        
         </>

@@ -20,7 +20,6 @@ const Home = ({ userObj }) => {
         }
         )
     }, []);
-
     return (
         <div>
             <h1>현재 모집중인 팀들</h1>

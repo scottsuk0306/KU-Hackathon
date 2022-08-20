@@ -4,6 +4,7 @@ import Auth from "routes/Auth";
 import Home from "routes/Home";
 import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
+import TeamView from "routes/TeamView";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   return (
@@ -26,6 +27,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             </Route>
             <Route exact path="/profile">
               <Profile userObj={userObj} refreshUser={refreshUser} />
+            </Route>
+            <Route exact path="/teamview">
+              <TeamView userObj={userObj}/>
             </Route>
           </div>
         ) : (
