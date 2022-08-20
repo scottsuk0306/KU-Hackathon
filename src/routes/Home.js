@@ -29,7 +29,7 @@ const Home = ({ userObj }) => {
                     <li>
                         <div className="nweet">
                             <Nweet teamObj={nweet} key={nweet.id} isOwner={nweet.creatorId === userObj.uid} />
-                            <Link to='/teamdetail'>
+                            <Link to='/teamdetail' state={{data:nweet.id}}>
                             <button>Participate</button>
                             </Link>
                         </div>

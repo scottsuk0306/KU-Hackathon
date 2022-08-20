@@ -9,6 +9,13 @@ const TeamView = ({userObj})=>{
     const [description,setDescription]=useState("");
     const [num,setNum]=useState(0);
     const [date,setDate]=useState(Date.now());
+    const [mission,setMission]=useState("");
+    const onChangeMission=(event)=>{
+        const{
+            target:{value},
+        }=event;
+        setMission(value);
+    }
     const onChangeGoal =(event)=>{
         const {
             target:{value},
@@ -40,6 +47,8 @@ const TeamView = ({userObj})=>{
             dueDate:date,
             number:num,
             description:description,
+            createdAt:Date.now(),
+            mission:mission,
             creatorId:userObj.uid,
         }
         await addDoc(collection(dbService,"teamlist"),newTeam);
@@ -55,6 +64,7 @@ const TeamView = ({userObj})=>{
                 마감 날짜<br></br><input type="date" value={date} onChange={onChangeDate}/><br></br>
                 모집 인원<br></br><input type="number" value={num} onChange={onChangeNum}/><br/>
                 상세 설명<br></br><input type="text" value={description} onChange={onChangeDescription}/><br></br>
+                사전 미션<br></br><input type="text" value={mission} onChange={onChangeMission}/><br></br>
                 <input type="submit" value="팀 생성하기"/> 
             </form>
                        
