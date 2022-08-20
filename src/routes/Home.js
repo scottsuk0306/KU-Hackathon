@@ -1,11 +1,13 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useEffect, useState } from "react";
-import { collection, addDoc, getDocs,onSnapshot } from "firebase/firestore";
+import {v4 as uuid} from "uuid";
+import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import Nweet from "components/Nweet";
+import {ref,getStorage,uploadString} from "firebase/storage";
 const Home = ({userObj}) => {
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    
+    const [attatchment, setAttatchment]=useState();
     useEffect(() => {
         onSnapshot(collection(dbService, "nweets"), (snapshot) =>{
             const nweetArray=snapshot.docs.map((doc)=>(
@@ -19,12 +21,17 @@ const Home = ({userObj}) => {
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
-        await addDoc(collection(dbService, "nweets"), {
+        const storage = getStorage();
+        const fileRef = ref(storage,  `${userObj.uid}/${uuid()}`);
+        uploadString(fileRef, attatchment, 'data_url').then((snapshot) => {
+        console.log('Uploaded a data_url string!');
+        });
+       /* await addDoc(collection(dbService, "nweets"), {
             text: nweet,
             createdAt: Date.now(),
             creatorId: userObj.uid,
         });
-        setNweet("");
+        setNweet("");*/
     };
     const onChange = (event) => {
         const {
@@ -33,8 +40,16 @@ const Home = ({userObj}) => {
         setNweet(value);
     };
     const onFileChange=(event)=>{
-
+        const {target:{files}}=event;
+        const theFile=files[0];
+        const reader=new FileReader();
+        reader.onloadend=(finishedEvent)=>{
+            const {currentTarget:{result},}=finishedEvent;
+            setAttatchment(result);
+        }
+        reader.readAsDataURL(theFile);
     }
+    const onClearAttatchment=()=>setAttatchment(null);
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -44,6 +59,10 @@ const Home = ({userObj}) => {
                     maxLength={120} />
                 <input type="file" accept="image/*" onChange={onFileChange}/>
                 <input type="submit" value="Nweet" />
+                {attatchment && <div>
+                    <img src={attatchment} width="50px" height="50px" alt="uploaded img"/>
+                    <button onClick={onClearAttatchment}>Clear photo</button>
+                    </div>}
             </form>
             <div>
                 {nweets.map((nweet)=>(
