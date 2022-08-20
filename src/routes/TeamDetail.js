@@ -32,6 +32,7 @@ const TeamDetail=()=>{
                 <li key="2">{team.description}</li>
                 <li key="3">{team.mission}</li>
             </ul>
+            <button >이 팀에 지원하기</button>
     </div>
     );
 }

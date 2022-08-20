@@ -6,6 +6,7 @@ import ProfileCard from 'routes/ProfileCard'
 import Navigation from 'components/Navigation'
 import TeamView from 'routes/TeamView'
 import TeamDetail from 'routes/TeamDetail'
+import MyTeam from 'routes/MyTeam'
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   return (
     <Router>
@@ -39,6 +40,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             </Route>
             <Route exact path='/teamdetail/:teamid' component={TeamDetail}>
               <TeamDetail userObj={userObj} />
+            </Route>
+            <Route exact path="/myteam">
+              <MyTeam userObj={userObj}/>
             </Route>
           </div>
         ) : (
