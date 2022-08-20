@@ -30,7 +30,7 @@ function App() {
     <>
       {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing..."}
       
-      <footer>&copy; NWITTER {new Date().getFullYear()}</footer>
+      <footer>&copy; KU Hackathon {new Date().getFullYear()}</footer>
     </>
   );
 }
