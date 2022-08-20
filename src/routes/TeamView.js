@@ -59,7 +59,7 @@ const TeamView = ({userObj})=>{
     
 
     return(
-        <>
+        <div>
             <h1>팀을 생성해보세요!</h1>
             <br></br>
             <form onSubmit={onSubmit} >
@@ -71,7 +71,7 @@ const TeamView = ({userObj})=>{
                 <input type="submit" value="팀 생성하기"/> 
             </form>
                        
-        </>
+        </div>
     )
                 
 }

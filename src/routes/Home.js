@@ -27,9 +27,8 @@ const Home = ({ userObj }) => {
                 {nweets.map((nweet) => (
                     <li>
                         <div className="nweet">
-                            <Nweet teamObj={nweet} key={nweet.teamId} isOwner={nweet.creatorId === userObj.uid} />
                             <Link to={`/teamdetail/${nweet.teamId}`}>
-                                <span>참여하기</span>
+                            <Nweet teamObj={nweet} key={nweet.teamId} isOwner={nweet.creatorId === userObj.uid} />
                             </Link>
                         </div>
                     </li>
