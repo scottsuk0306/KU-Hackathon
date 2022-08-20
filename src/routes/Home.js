@@ -20,21 +20,17 @@ const Home = ({ userObj }) => {
         )
     }, []);
     return (
-        <div>
-            <h1>현재 모집중인 팀들</h1>
-            <br></br>
-            <ul>
-                {nweets.map((nweet) => (
-                    <li>
-                        <div className="nweet">
-                            <Link to={`/teamdetail/${nweet.teamId}`}>
-                            <Nweet teamObj={nweet} key={nweet.teamId} isOwner={nweet.creatorId === userObj.uid} />
-                            </Link>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <section className="container">
+            <div className="movies">
+                {nweets.map((nweet) => {
+                    return (
+                        <Link to={`/teamdetail/${nweet.teamId}`}>
+                        <Nweet teamObj={nweet} key={nweet.teamId} isOwner={nweet.creatorId === userObj.uid} />
+                        </Link>
+                    )
+                })}
+            </div>
+        </section>
     )
 }
 export default Home;
