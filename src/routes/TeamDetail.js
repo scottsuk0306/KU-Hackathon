@@ -5,40 +5,32 @@ import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import { dbService } from "fbase";
 import { useParams } from "react-router-dom";
 const TeamDetail=()=>{
-    const [nweets, setNweets] = useState([
-
-    ]);
-    const [nweet,setNweet]=useState({
-        goal:"목표",
-        description:"상세 설명",
-        mission:"가입 조건",
-    });
+    const [teams, setTeams] = useState([]);
         
     const id=useParams();
-    /*useEffect(() => {
+    useEffect(() => {
         onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
             const teamArray = snapshot.docs.map((doc) => (
                 {
                     id: doc.id,
                     ...doc.data(),
                 }));
-            setNweets(teamArray.reverse());
+            setTeams(teamArray.reverse());
         }
         )
     }, []);
-    console.log(nweets);
-    setNweet(nweets.filter(nweet=>nweet.teamId===id.teamid)[0])
-    if(nweet===null)return(
-        <div>
-            현재 데이터를 불러오고 있어요!
-        </div>
-    );else{*/
+    const team=teams.find(t=>t.teamId===id.teamid)??{
+        goal:"목표",
+        description:"상세 설명",
+        mission:"미션",
+    }
+    
     return(
         <div>
             <ul>
-                <li>{nweet.goal}</li>
-                <li>{nweet.description}</li>
-                <li>{nweet.mission}</li>
+                <li key="1">{team.goal}</li>
+                <li key="2">{team.description}</li>
+                <li key="3">{team.mission}</li>
             </ul>
     </div>
     );

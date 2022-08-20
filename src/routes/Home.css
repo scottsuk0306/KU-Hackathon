@@ -30,7 +30,6 @@ body,
 }
 
 .movies {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -39,6 +38,7 @@ body,
 }
 
 .movies .movie {
+    width: 100%;
     background-color: white;
     margin-bottom: 70px;
     display: flex;
