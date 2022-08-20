@@ -28,7 +28,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             </Route>
             <Route exact path='/profile'>
               <ProfileCard
-                name="Rita Correia"
+                name={userObj.displayName}
                 age="32"
                 city="Backend Developer"
                 followers="80K"

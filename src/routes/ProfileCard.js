@@ -1,6 +1,9 @@
 import React from "react";
 import "./ProfileCard.css";
 import avatar from "../images/image-rita.png";
+import {
+    signOut
+  } from "firebase/auth";
 
 function ProfileCard(props) {
 	return (
