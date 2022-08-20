@@ -33,7 +33,7 @@ const Navigation = ({ userObj }) => (
       </li>
       <li>
         <Link
-          to='/teamdetail'
+          to='/teamview'
           style={{
             marginLeft: 10,
             display: 'flex',
@@ -52,7 +52,7 @@ const Navigation = ({ userObj }) => (
             </li>
             <li>
         <Link
-          to='/teamview'
+          to='/teamdetail'
           style={{
             marginLeft: 10,
             display: 'flex',
