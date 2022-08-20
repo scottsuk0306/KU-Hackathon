@@ -1,7 +1,7 @@
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import React, { useState } from "react";
-import { doc, deleteDoc,updateDoc } from "firebase/firestore";
-
+import { doc, deleteDoc,updateDoc} from "firebase/firestore";
+import {  ref ,deleteObject} from "firebase/storage";
 const Nweet = ({ nweetObj, isOwner }) => {
     const [editing, setEditing] = useState(false);
     const [newNweet, setNewNweet] = useState(nweetObj.text);
@@ -10,6 +10,8 @@ const Nweet = ({ nweetObj, isOwner }) => {
 
         if (ok) {
             deleteDoc(doc(dbService, "nweets", nweetObj.id));
+            const fileRef = ref(storageService, nweetObj.fileUrl);
+            deleteObject(fileRef);
         }
         else {
 
