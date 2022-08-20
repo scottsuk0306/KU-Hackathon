@@ -1,0 +1,25 @@
+.formInput{
+        width: 500px;
+        height: 32px;
+        font-size: 15px;
+        border: 0;
+        border-radius: 15px;
+        outline: none;
+        padding-left: 10px;
+        background-color: rgb(233, 233, 233);
+      
+}
+
+.teamBtn {
+	margin-top: 40px;
+	cursor: pointer;
+	border-radius: 20px;
+	border: none;
+	padding: 10px 0px;
+	font-size: 12px;
+	text-align: center;
+	width: 150px;
+	background: #2c2c2c;
+	cursor: pointer;
+	color: white;
+  }

@@ -5,6 +5,7 @@ import { authService, dbService } from "fbase";
 import { addDoc ,collection} from "firebase/firestore";
 import { async } from "@firebase/util";
 import {v4 as uuid} from "uuid";
+import "./TeamView.css"
 const TeamView = ({userObj})=>{
     const [goal,setGoal]=useState("");
     const [description,setDescription]=useState("");
@@ -68,7 +69,7 @@ const TeamView = ({userObj})=>{
                 <h3>모집 인원</h3><br/><br/><input type="number" value={num} onChange={onChangeNum} className="formInput"/><br/><br/>
                 <h3>상세 설명</h3><br/><br/><input type="text" value={description} onChange={onChangeDescription} className="formInput"/><br></br><br/>
                 <h3>사전 미션</h3><br/><br/><input type="text" value={mission} onChange={onChangeMission} className="formInput"/><br></br><br/>
-                <input type="submit" value="팀 생성하기"/> 
+                <input type="submit" value="팀 생성하기" className="teamBtn"/> 
             </form>
                        
         </div>
