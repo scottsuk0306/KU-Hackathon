@@ -17,6 +17,9 @@ const AppRouter = ({ isLoggedIn ,userObj,refreshUser}) => {
                         <Route exact path="/profile">
                             <Profile refreshUser={refreshUser} userObj={userObj}/>
                         </Route>
+                        <Route exact path="/teamview">
+                            <Profile refreshUser={refreshUser} userObj={userObj}/>
+                        </Route>
                     </> :
                     <Route exact path="/">
                         <Auth />
