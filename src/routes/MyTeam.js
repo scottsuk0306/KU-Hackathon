@@ -1,40 +1,36 @@
-import { React,useEffect } from "react";
+import { React,useEffect, useState } from "react";
 import { collection } from "firebase/firestore";
 import { authService, dbService } from "fbase";
-import { getDocs } from "firebase/firestore";
-import { query,where,orderBy } from "firebase/firestore";
+import { onSnapshot } from "firebase/firestore";
 import Nweet from "components/Nweet";
 const MyTeam=(userObj)=>{
-    const [teams,setTeams]=[];
-    const getMyTeams=async()=>{
-        const q=query(
-            collection(dbService,"teamlist"),
-            where("creatorId","==",userObj.uid),
-            orderBy("createdAt","desc")
-        );
-        const querySnapshot=await getDocs(q);
-        const teamArray=await querySnapshot.docs.map((doc)=>(
-            {
-                id:doc.id,
-                ...doc.data(),
-            }));
-            setTeams(teamArray);
-        };
+    const [teams,setTeams]=useState([]);
     
-    useEffect(()=>{
-        getMyTeams();
-        console.log(teams);
-    },[])
+    useEffect(() => {
+        onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
+            const teamArray = snapshot.docs.map((doc) => (
+                {
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+                setTeams(teamArray.filter(team=>team.creatorId===userObj.userObj.uid))
+        }
+        )
+        console.log(teams)
+    }, []);
     return(
+        <div>
+        <h1>내가 팀장인 팀들!</h1>
         <section className="container">
             <div>
-                {teams && teams.map((team) => (
+                {teams.map((team) => (
                     <div>
                         <Nweet teamObj={team} key={team.Id} isOwner={team.creatorId === userObj.uid} />
                     </div>
                 ))}
             </div>
         </section>
+        </div>
     )
 
 }
