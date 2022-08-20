@@ -52,7 +52,8 @@ const TeamView = ({userObj})=>{
             createdAt:Date.now(),
             mission:mission,
             creatorId:userObj.uid,
-            teamId:uuid(),
+            teamId: uuid(),
+            partipants: [],
         }
         await addDoc(collection(dbService,"teamlist"),newTeam);
         console.log(newTeam)
