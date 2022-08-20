@@ -1,84 +1,42 @@
 import { dbService, storageService } from "fbase";
 import React, { useEffect, useState } from "react";
-import {v4 as uuid} from "uuid";
+import { v4 as uuid } from "uuid";
 import { collection, addDoc, onSnapshot } from "firebase/firestore";
 import Nweet from "components/Nweet";
-import {ref,getStorage,uploadString, getDownloadURL} from "firebase/storage";
-const Home = ({userObj}) => {
+import { ref, getStorage, uploadString, getDownloadURL } from "firebase/storage";
+import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+const Home = ({ userObj }) => {
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attatchment, setAttatchment]=useState("");
+    const [attatchment, setAttatchment] = useState("");
     useEffect(() => {
-        onSnapshot(collection(dbService, "nweets"), (snapshot) =>{
-            const nweetArray=snapshot.docs.map((doc)=>(
+        onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
+            const teamArray = snapshot.docs.map((doc) => (
                 {
-                    id:doc.id,
+                    id: doc.id,
                     ...doc.data(),
                 }));
-                setNweets(nweetArray.reverse());
+            setNweets(teamArray.reverse());
         }
         )
     }, []);
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        let fileUrl="";
-        if(attatchment!==""){
-        const storage = getStorage();
-        const fileRef = ref(storage,  `${userObj.uid}/${uuid()}`);
-        await uploadString(fileRef, attatchment, 'data_url').then((snapshot) => {
-            console.log('Uploaded a data_url string!');
-          });
-        fileUrl=await getDownloadURL(ref(storageService,fileRef));
-        }
-        const newNweet={
-            text: nweet,
-            createdAt: Date.now(),
-            creatorId: userObj.uid,
-            fileUrl,
-        }
-        await addDoc(collection(dbService, "nweets"),newNweet);
-            
-        setNweet("");
-        setAttatchment("");
-    };
-    const onChange = (event) => {
-        const {
-            target: { value }
-        } = event;
-        setNweet(value);
-    };
-    const onFileChange=(event)=>{
-        const {target:{files}}=event;
-        const theFile=files[0];
-        const reader=new FileReader();
-        reader.onloadend=(finishedEvent)=>{
-            const {currentTarget:{result},}=finishedEvent;
-            setAttatchment(result);
-        }
-        reader.readAsDataURL(theFile);
-    }
-    const onClearAttatchment=()=>setAttatchment(null);
+
     return (
         <div>
-            <form onSubmit={onSubmit}>
-                <input value={nweet}
-                    type="text" placeholder="What's on your mind?"
-                    onChange={onChange}
-                    maxLength={120} />
-                <input type="file" accept="image/*" onChange={onFileChange}/>
-                <input type="submit" value="Nweet" />
-                {attatchment && <div>
-                    <img src={attatchment} width="50px" height="50px" alt="uploaded img"/>
-                    <button onClick={onClearAttatchment}>Clear photo</button>
-                    </div>}
-            </form>
-            <div>
-                {nweets.map((nweet)=>(
-                    <div>
-                    <Nweet nweetObj={nweet} key={nweet.id} isOwner={nweet.creatorId===userObj.uid}/>
-                    </div>
+            <h1>현재 모집중인 팀들</h1>
+            <br></br>
+            <ul>
+                {nweets.map((nweet) => (
+                    <li>
+                        <div className="nweet">
+                            <Nweet teamObj={nweet} key={nweet.id} isOwner={nweet.creatorId === userObj.uid} />
+                            <Link to='/teamdetail'>
+                            <button>Participate</button>
+                            </Link>
+                        </div>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </div>
     )
 }
