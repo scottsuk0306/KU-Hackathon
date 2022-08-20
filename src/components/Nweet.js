@@ -20,7 +20,7 @@ const Nweet = ({ teamObj, isOwner }) => {
                 <h2 className="movie__title">{teamObj.goal}</h2>
                 <h3 className="movie__year">기간: {teamObj.dueDate}</h3>
                 <h4 className="movie__year">모집 인원:{teamObj.number}</h4>
-                <p className="movie__summary">상세 설명:{teamObj.description}</p>
+                <p className="movie__summary">{teamObj.description}</p>
             </div>
         </div>
 
