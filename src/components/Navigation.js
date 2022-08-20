@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faUser, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUsers, faHome } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = ({ userObj }) => (
   <nav>
@@ -47,6 +47,25 @@ const Navigation = ({ userObj }) => (
             {userObj.displayName
               ? `팀 모집하기`
               : '팀 모집하기'}
+          </span>
+        </Link>
+            </li>
+            <li>
+        <Link
+          to='/teamdetail'
+          style={{
+            marginLeft: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            fontSize: 12
+          }}
+        >
+          <FontAwesomeIcon icon={faHome} color={'#04AAFF'} size='2x' />
+          <span style={{ marginTop: 10 }}>
+            {userObj.displayName
+              ? `나의 팀`
+              : '나의 팀'}
           </span>
         </Link>
       </li>
