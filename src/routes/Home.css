@@ -31,6 +31,7 @@ body,
 }
 
 .movies {
+    width: 400%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -40,8 +41,8 @@ body,
     width: 80%;
 }
 
+
 .movies .movie {
-    width: 200%;
     background-color: white;
     margin-bottom: 70px;
     display: flex;
