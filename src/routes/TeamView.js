@@ -63,11 +63,11 @@ const TeamView = ({userObj})=>{
             <h1>팀을 생성해보세요!</h1>
             <br></br>
             <form onSubmit={onSubmit} >
-                팀의 목표<br></br><input type="text" value={goal} onChange={onChangeGoal} className="formInput"/><br/>
-                마감 날짜<br></br><input type="date" value={date} onChange={onChangeDate} className="formInput"/><br></br>
-                모집 인원<br></br><input type="number" value={num} onChange={onChangeNum} className="formInput"/><br/>
-                상세 설명<br></br><input type="text" value={description} onChange={onChangeDescription} className="formInput"/><br></br>
-                사전 미션<br></br><input type="text" value={mission} onChange={onChangeMission} className="formInput"/><br></br>
+                <h3>팀의 목표</h3><br/><br/><input type="text" value={goal} onChange={onChangeGoal} className="formInput"/><br/><br/>
+                <h3>마감 날짜</h3><br/><br/><input type="date" value={date} onChange={onChangeDate} className="formInput"/><br></br><br/>
+                <h3>모집 인원</h3><br/><br/><input type="number" value={num} onChange={onChangeNum} className="formInput"/><br/><br/>
+                <h3>상세 설명</h3><br/><br/><input type="text" value={description} onChange={onChangeDescription} className="formInput"/><br></br><br/>
+                <h3>사전 미션</h3><br/><br/><input type="text" value={mission} onChange={onChangeMission} className="formInput"/><br></br><br/>
                 <input type="submit" value="팀 생성하기"/> 
             </form>
                        

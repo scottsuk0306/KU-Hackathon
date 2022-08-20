@@ -3,9 +3,12 @@
 input {
   all: unset;
   appearance: none;
+  width: 500px;
   box-sizing: border-box;
 }
-
+h3{
+  text-align: center;
+}
 * {
   box-sizing: border-box;
 }
