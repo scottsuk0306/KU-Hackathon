@@ -68,7 +68,18 @@ img {
 	flex: 1;
 }
 .profile{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	text-align: center;
 }
+.logoutBtn {
+	margin-top: 40px;
+	cursor: pointer;
+	border-radius: 20px;
+	border: none;
+	padding: 10px 0px;
+	font-size: 12px;
+	text-align: center;
+	width: 150px;
+	background: #2c2c2c;
+	cursor: pointer;
+	color: white;
+  }

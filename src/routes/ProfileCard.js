@@ -35,7 +35,7 @@ function ProfileCard(props) {
 			</div>
 			
 		</div>
-		<button onClick={onLogOutClick}>Log Out</button>
+		<button className="logoutBtn" onClick={onLogOutClick}>Log Out</button>
 		</div>
 	);
 }
