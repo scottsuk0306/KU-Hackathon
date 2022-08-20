@@ -11,8 +11,6 @@ const Home = ({ userObj }) => {
     const [attatchment, setAttatchment] = useState("");
     useEffect(() => {
         onSnapshot(collection(dbService, "teamlist"), (snapshot) => {
-            dbService
-                .orderBy("createdAt", "desc")
             const teamArray = snapshot.docs.map((doc) => (
                 {
                     id: doc.id,
