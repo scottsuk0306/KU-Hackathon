@@ -17,7 +17,7 @@ const Nweet = ({ teamObj, isOwner }) => {
         <div>
             <h4>{teamObj.goal}</h4>
             <br></br>
-            <h4>기간: {teamObj.date}</h4>
+            <h4>기간: {teamObj.dueDate}</h4>
             <br></br>
             <h4>모집 인원:{teamObj.number}</h4>
             <br></br>

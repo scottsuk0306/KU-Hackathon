@@ -31,7 +31,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             <Route exact path='/teamview'>
               <TeamView userObj={userObj} />
             </Route>
-            <Route exact path='/teamdetail'>
+            <Route exact path='/teamdetail/:teamid' component={TeamDetail}>
               <TeamDetail userObj={userObj} />
             </Route>
           </div>
