@@ -5,7 +5,6 @@ import { getAuth, onAuthStateChanged, updateCurrentUser } from "firebase/auth";
 
 function App() {
   const [init, setInit] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userObj,setuserObj]=useState(null);
   useEffect(() => {
     const auth = getAuth();
@@ -17,7 +16,7 @@ function App() {
           updateProfile: (args)=>user.updateProfile(args),
         });
       } else {
-        setIsLoggedIn(false);
+        setuserObj(false);
       }
       setInit(true);
     });
