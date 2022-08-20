@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { authService } from "fbase";
 
-const inputStyles = {};
+import "./AuthForm.css";
+import { createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "firebase/auth";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -23,12 +24,14 @@ const AuthForm = () => {
     try {
       let data;
       if (newAccount) {
-        data = await authService.createUserWithEmailAndPassword(
+        data = await createUserWithEmailAndPassword(
+          authService,
           email,
-          password
-        );
+          password,
+        )
+        ;
       } else {
-        data = await authService.signInWithEmailAndPassword(email, password);
+        data = await signInWithEmailAndPassword(authService,email, password);
       }
       console.log(data);
     } catch (error) {
@@ -38,7 +41,7 @@ const AuthForm = () => {
   const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <>
-      <form onSubmit={onSubmit} className="container">
+      <form onSubmit={onSubmit} className="authcontainer">
         <input
           name="email"
           type="email"

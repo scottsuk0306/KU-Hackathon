@@ -67,3 +67,8 @@ img {
 .photos {
 	flex: 1;
 }
+.profile{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}

@@ -30,7 +30,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
               <ProfileCard
                 name={userObj.displayName}
                 age="32"
-                city="Backend Developer"
+                city="Developer"
                 followers="80K"
                 likes="803K"
                 photos="1.4K"/>

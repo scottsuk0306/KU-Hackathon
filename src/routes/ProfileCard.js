@@ -1,12 +1,16 @@
 import React from "react";
 import "./ProfileCard.css";
 import avatar from "../images/image-rita.png";
-import {
-    signOut
-  } from "firebase/auth";
-
+import { authService } from "fbase";
+import {useHistory} from 'react-router-dom';
 function ProfileCard(props) {
+	const history = useHistory();
+  const onLogOutClick = () => {
+    authService.signOut()
+    history.push('/');
+  };
 	return (
+		<div className="profile">
 		<div className="card-container">
 			<header>
 				<img src={avatar} alt={props.name} />
@@ -29,6 +33,9 @@ function ProfileCard(props) {
 					<h2 className="smaller-text">Photos</h2>
 				</div>
 			</div>
+			
+		</div>
+		<button onClick={onLogOutClick}>Log Out</button>
 		</div>
 	);
 }
