@@ -16,6 +16,7 @@ function App() {
           displayName:user.displayName,
           updateProfile: (args)=>user.updateProfile(args),
         });
+        setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
       }
@@ -28,7 +29,7 @@ function App() {
   };
   return (
     <>
-      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing..."}
+      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={isLoggedIn} userObj={userObj} /> : "Initializing..."}
       
      
     </>
