@@ -27,11 +27,12 @@ const TeamDetail=()=>{
     
     return(
         <div>
-            <ul>
-                <li key="1">{team.goal}</li>
-                <li key="2">{team.description}</li>
-                <li key="3">{team.mission}</li>
-            </ul>
+            <h3>Goal</h3>
+            <p>{team.goal}</p>
+            <h3>Detail</h3>
+            <p>{team.description}</p>
+            <h3>Mission</h3>
+            <p>{team.mission}</p>
             <button >이 팀에 지원하기</button>
     </div>
     );
