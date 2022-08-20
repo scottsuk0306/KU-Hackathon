@@ -11,7 +11,7 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setuserObj({
-          uid:user.uid,
+          uid: user.uid,
           displayName:user.displayName,
           updateProfile: (args)=>user.updateProfile(args),
         });
@@ -29,7 +29,6 @@ function App() {
     <>
       {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "Initializing..."}
       
-      <footer>&copy; NWITTER {new Date().getFullYear()}</footer>
     </>
   );
 }

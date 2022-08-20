@@ -20,16 +20,16 @@ const Home = ({userObj}) => {
     }, []);
     
     return (
-        <>
+        <div className="container">
             <NweetFactory userObj={userObj}/>
-            <div>
+            <div style={{marginTop:30}}>
                 {nweets.map((nweet)=>(
                     <div>
                     <Nweet nweetObj={nweet} key={nweet.id} isOwner={nweet.creatorId===userObj.uid}/>
                     </div>
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 export default Home;
