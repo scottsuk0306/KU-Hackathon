@@ -6,6 +6,8 @@ import Nweet from "components/Nweet";
 import { ref, getStorage, uploadString, getDownloadURL } from "firebase/storage";
 import { Link, Route, BrowserRouter as Router } from "react-router-dom";
 import TeamDetail from "./TeamDetail";
+import "./Home.css";
+
 const Home = ({ userObj }) => {
     const [nweets, setNweets] = useState([]);
     useEffect(() => {

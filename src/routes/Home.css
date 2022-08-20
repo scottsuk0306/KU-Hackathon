@@ -16,7 +16,6 @@ body,
 #potato,
 .container {
     height: 100%;
-    width: 100%
     display: flex;
     justify-content: center;
 }
@@ -41,7 +40,7 @@ body,
 }
 
 .movies .movie {
-    width: 45%;
+    width: 50%;
     background-color: white;
     margin-bottom: 70px;
     display: flex;
