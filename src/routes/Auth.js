@@ -1,4 +1,5 @@
-import { authService,firebaseInstance } from "fbase";
+import { authService, firebaseInstance } from "fbase";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import {
     createUserWithEmailAndPassword,
@@ -8,7 +9,14 @@ import {
     GithubAuthProvider,
   } from "firebase/auth";
 import { async } from "@firebase/util";
-const Auth= ()=>{
+import AuthForm from "components/AuthForm";
+import {
+  faTwitter,
+  faGoogle,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
+
+const Auth = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const [newAccount,setNewAccount]=useState(true);
@@ -58,20 +66,24 @@ const onSocialClick=async(event)=>{
     console.log(data);
 }
     return (
-    <div>
-        <form onSubmit={onSubmit}>
-            <input name="email" type="email" placeholder="Email" required value={email} onChange={onChange}/>
-            <input name="password" type="password" placeholder="password" required value={password} onChange={onChange}/>
-            <input type="submit" value={newAccount ?"Create Account" :"Log In"}/>
-            {error}
-        </form>
-        <span onClick={toggleAccount}>{newAccount ?"Sign in":"Create Account"}</span>
-        <div>
-            <button onClick={onSocialClick} name="google">continue with google</button>
-            <button onClick={onSocialClick} name="github">continue with github</button>
-        </div>
+    <div className="authContainer">
+      <FontAwesomeIcon
+        icon={faTwitter}
+        color={"#04AAFF"}
+        size="3x"
+        style={{ marginBottom: 30 }}
+      />
+      <AuthForm />
+      <div className="authBtns">
+        <button onClick={onSocialClick} name="google" className="authBtn">
+          Continue with Google <FontAwesomeIcon icon={faGoogle} />
+        </button>
+        <button onClick={onSocialClick} name="github" className="authBtn">
+          Continue with Github <FontAwesomeIcon icon={faGithub} />
+        </button>
+      </div>
     </div>
-    );
+  );
 }
 
 export default Auth;
